@@ -12,5 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/shop', function(){
+    return view('shop');
+});
+
+Route::get('/login', function(){
+    return view('login');
+});
+
+Route::post('postForm', [
+    'as' => 'postForm',
+    'uses' => 'LoginController@postForm'
+]);
