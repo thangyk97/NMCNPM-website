@@ -55,3 +55,14 @@ Route::get('/blog-single', function(){
 Route::get('/contact-us', function(){
     return view('contact-us');
 });
+
+
+////////////////////////////////////////////////
+Route::get('session/get', 'UserController@getSession');
+Route::get('session/put', 'UserController@putSession');
+Route::get('session/forget', 'UserController@forgetSession');
+
+Route::get('/add-to-cart/{id}', [
+    'uses' => 'ProductController@getAddToCart',
+    'as'   => 'product.addToCart'
+]);
