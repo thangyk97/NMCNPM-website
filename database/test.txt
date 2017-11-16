@@ -1,0 +1,13 @@
+create table product (
+    id int (11) not null,
+    name varchar(50) not null,
+    price int (11) not null,
+    amount int (11) not null,
+    constraint primary_key primary key (id)
+);
+
+create table user (
+    id int (11) not null,
+    email text not null,
+    password text not null
+);

@@ -1,9 +1,0 @@
-create table sessions(
-    id varchar(255),
-    user_id int(10),
-    ip_address varchar(45),
-    user_agent text,
-    payload text not null,
-    last_activity int(11) not null,
-    constraint primary_key primary key(id)
-);
