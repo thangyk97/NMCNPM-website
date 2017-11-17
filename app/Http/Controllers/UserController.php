@@ -14,16 +14,33 @@ class UserController extends Controller
      * @param  int  $id
      * @return Response
      */
+
+    public function getAddToCart(Request $request, int $id) {
+        
+    }
+
+
     public function getSession(Request $request) {
         if ($request->session()->has('session_name')) {
-            echo $request->session()->get('session_name');
+            $data = $request->session()->get('session_name');
+            return view('session', compact('data'));
+
         } else {
             echo 'no data in the session';
         }
     }
 
     public function putSession(Request $request) {
-        $request->session()->put('session_name', 'thang dep trai');
+        if ($request->session()->get('session_name')) {
+            $old = $request->session()->get('session_name');
+            
+            $array = array_merge($old, ['thang']);
+        } else {
+            $array = ['thang'];
+        }
+
+        $request->session()->put('session_name',$array);
+        
         echo 'a data has been added to the session';
     }
 

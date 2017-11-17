@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+
+Route::get('/', 'Controller@getHome');
 
 Route::get('/shop', function(){
     return view('shop');
@@ -64,5 +63,5 @@ Route::get('session/forget', 'UserController@forgetSession');
 
 Route::get('/add-to-cart/{id}', [
     'uses' => 'ProductController@getAddToCart',
-    'as'   => 'product.addToCart'
+    'as'   => 'addToCart'
 ]);
