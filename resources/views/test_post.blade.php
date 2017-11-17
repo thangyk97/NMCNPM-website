@@ -14,3 +14,15 @@
     </div><!--/login form-->
 </div>  
 </html>
+
+<!-- <section>
+    <div class='container'>
+
+            @foreach ( $cart->items as $item)
+                <br><h3>{{$item['item']->name.' '.$item['qty']}}</h3>
+
+
+            @endforeach
+
+    </div>   
+</section> -->

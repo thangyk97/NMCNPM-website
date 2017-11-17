@@ -6,22 +6,22 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>@yield('title')</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/price-range.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('css/prettyPhoto.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('css/price-range.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('css/animate.css')}}" rel="stylesheet">
+	<link href="{{ URL::asset('css/main.css')}}" rel="stylesheet">
+	<link href="{{ URL::asset('css/responsive.css')}}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->       
     <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ URL::asset('images/ico/apple-touch-icon-144-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ URL::asset('images/ico/apple-touch-icon-114-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ URL::asset('images/ico/apple-touch-icon-72-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" href="{{ URL::asset('images/ico/apple-touch-icon-57-precomposed.png')}}">
     @yield('styles')
 </head><!--/head-->
 
@@ -58,7 +58,7 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="{{url('/')}}"><img src="images/home/logo.png" alt="" /></a>
+							<a href="{{url('/')}}"><img src="{{ URL::asset('images/home/logo.png')}}" alt="" /></a>
 						</div>
 					</div>
 					<div class="col-sm-8">
@@ -283,11 +283,11 @@
 	
 
   
-    <script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.scrollUp.min.js"></script>
-	<script src="js/price-range.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{{ URL::asset('js/jquery.js')}}"></script>
+	<script src="{{ URL::asset('js/bootstrap.min.js')}}"></script>
+	<script src="{{ URL::asset('js/jquery.scrollUp.min.js')}}"></script>
+	<script src="{{ URL::asset('js/price-range.js')}}"></script>
+    <script src="{{ URL::asset('js/jquery.prettyPhoto.js')}}"></script>
+    <script src="{{ URL::asset('js/main.js')}}"></script>
 </body>
 </html>

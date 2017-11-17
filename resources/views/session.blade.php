@@ -5,14 +5,16 @@
 @endsection
 	
 @section('content')
-    <div>
-        <?php
+<section>
+    <div class='container'>
 
-            foreach ( $cart->items as $item) {
-                echo $item['item']->name.' '.$item['qty'].'<br>';
-            }
+            @foreach ( $cart->items as $item)
+                <br><h3>{{$item['item']->name.' '.$item['qty']}}</h3>
 
-        ?>
 
-    </div>
+            @endforeach
+
+    </div>   
+</section>
+
 @endsection

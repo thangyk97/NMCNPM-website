@@ -24,7 +24,7 @@ class ProductController extends Controller
 
         $request->session()->put('cart', $cart);
 
-        return view('session', compact('cart'));
+        return view('view_cart', compact('cart'));
     }
 
 }
