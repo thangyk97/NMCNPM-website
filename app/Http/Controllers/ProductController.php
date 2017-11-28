@@ -15,7 +15,6 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
-
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
 
         $cart = new Cart($oldCart);
@@ -24,7 +23,14 @@ class ProductController extends Controller
 
         $request->session()->put('cart', $cart);
 
-        return view('view_cart', compact('cart'));
+        return view('cart', compact('cart'));
+    }
+
+    public function viewCart(Request $request) {
+
+        $cart = Session::has('cart') ? Session::get('cart') : null;
+
+        return view('cart', compact('cart'));
     }
 
 }
