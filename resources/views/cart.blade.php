@@ -28,10 +28,8 @@
 						</tr>
 					</thead>
 					<tbody>
-
-						@if($cart != null)
-
-							@foreach ($cart->items as $storedItem)
+						@if($cart)
+							@foreach($cart->items as $storedItem)
 								<tr>
 									<td class="cart_product">
 										<a href=""><img src="{{URL::asset($storedItem['item']->link_img)}}" alt=""></a>
@@ -60,7 +58,9 @@
 							@endforeach
 						@else
 							<tr>
-								<h3>empty card</h3>
+								<td>
+									<h3>empty card</h3>
+								</td>
 							</tr>
 
 						@endif
@@ -71,6 +71,7 @@
 	</section> <!--/#cart_items-->
 
 	<section id="do_action">
+	@if ($cart)
 		<div class="container">
 			<div class="heading">
 				<h3>What would you like to do next?</h3>
@@ -78,72 +79,22 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-6">
-					<div class="chose_area">
-						<ul class="user_option">
-							<li>
-								<input type="checkbox">
-								<label>Use Coupon Code</label>
-							</li>
-							<li>
-								<input type="checkbox">
-								<label>Use Gift Voucher</label>
-							</li>
-							<li>
-								<input type="checkbox">
-								<label>Estimate Shipping & Taxes</label>
-							</li>
-						</ul>
-						<ul class="user_info">
-							<li class="single_field">
-								<label>Country:</label>
-								<select>
-									<option>United States</option>
-									<option>Bangladesh</option>
-									<option>UK</option>
-									<option>India</option>
-									<option>Pakistan</option>
-									<option>Ucrane</option>
-									<option>Canada</option>
-									<option>Dubai</option>
-								</select>
-								
-							</li>
-							<li class="single_field">
-								<label>Region / State:</label>
-								<select>
-									<option>Select</option>
-									<option>Dhaka</option>
-									<option>London</option>
-									<option>Dillih</option>
-									<option>Lahore</option>
-									<option>Alaska</option>
-									<option>Canada</option>
-									<option>Dubai</option>
-								</select>
-							
-							</li>
-							<li class="single_field zip-field">
-								<label>Zip Code:</label>
-								<input type="text">
-							</li>
-						</ul>
-						<a class="btn btn-default update" href="">Get Quotes</a>
-						<a class="btn btn-default check_out" href="">Continue</a>
-					</div>
-				</div>
-				<div class="col-sm-6">
 					<div class="total_area">
 						<ul>
-							<li>Cart Sub Total <span>$59</span></li>
-							<li>Eco Tax <span>$2</span></li>
+							<li>Cart Sub Total <span>{{'$'.$cart->totalPrice}}</span></li>
 							<li>Shipping Cost <span>Free</span></li>
-							<li>Total <span>$61</span></li>
+							<li>Total <span>{{'$'.$cart->totalPrice}}</span></li>
 						</ul>
 							<a class="btn btn-default update" href="">Update</a>
-							<a class="btn btn-default check_out" href="">Check Out</a>
+							<a class="btn btn-default check_out" href="{{url('checkout')}}">Check Out</a>
 					</div>
 				</div>
 			</div>
 		</div>
+	@else
+		<div class="container">
+			<a class="btn btn-primary" href="{{url('/')}}">Back to Shop</a>
+		</div>
+	@endif
 	</section><!--/#do_action-->
 @endsection

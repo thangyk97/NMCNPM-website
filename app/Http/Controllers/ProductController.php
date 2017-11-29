@@ -33,4 +33,12 @@ class ProductController extends Controller
         return view('cart', compact('cart'));
     }
 
+    public function checkout(Request $request) {
+
+        $cart = Session::has('cart') ? Session::get('cart') : null;
+
+        return view('checkout', compact('cart'));
+
+    }
+
 }
