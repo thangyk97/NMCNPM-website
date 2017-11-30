@@ -42,6 +42,12 @@ Route::get('/contact-us', function(){
     return view('contact-us');
 });
 
+Route::post('/postInforCustomer', [
+    'as'=>'postInforCustomer',
+    'uses'=>'ProductController@postInforCustomer'
+]);
+
+Route::get('/getOrders', 'ProductController@getOrders');
 
 ////////////////////////////////////////////////
 Route::get('session/get', 'UserController@getSession');

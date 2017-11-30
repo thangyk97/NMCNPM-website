@@ -62,7 +62,6 @@
 									<h3>empty card</h3>
 								</td>
 							</tr>
-
 						@endif
 					</tbody>
 				</table>

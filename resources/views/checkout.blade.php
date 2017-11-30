@@ -27,16 +27,15 @@
 							<div class="bill-to">
 								<p>Bill To</p>
 								<div class="form-one">
-									<form id="myForm">
-										<input type="text" placeholder="Company Name">
-										<input type="text" placeholder="Email*">
-										<input type="text" placeholder="Title">
-										<input type="text" placeholder="First Name *">
-										<input type="text" placeholder="Middle Name">
-										<input type="text" placeholder="Last Name *">
-										<input type="text" placeholder="Phone *">
-										<input type="text" placeholder="Address 1 *">
-										<input type="text" placeholder="Address 2">
+									<form id="myForm" action="{{route('postInforCustomer')}}" method="post">
+										{{ csrf_field() }}
+										<input type="text" name="companyName" placeholder="Company Name" required>
+										<input type="text" name="email" placeholder="Email*" required>
+										<input type="text" name="title" placeholder="Title">
+										<input type="text" name="name" placeholder="Name *">
+										<input type="text" name="phone" placeholder="Phone *">
+										<input type="text" name="address1" placeholder="Address 1 *">
+										<input type="text" name="address2" placeholder="Address 2">
 									</form>
 								</div>
 							</div>
@@ -48,6 +47,7 @@
 							</div>	
 							<!-- <a class="btn btn-primary" href="">Order</a> -->
 							<input class="btn btn-primary" type="button" onclick="myFunction()" value="Order">
+							
 							<script>
 								function myFunction() {
 									document.getElementById("myForm").submit();

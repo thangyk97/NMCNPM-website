@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use App\Product;
+use App\Order;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -39,6 +40,38 @@ class ProductController extends Controller
 
         return view('checkout', compact('cart'));
 
+    }
+
+    public function postInforCustomer(Request $request) {
+
+        $order = new Order;
+
+        $order->company_name = $request->companyName;
+
+        $order->email = $request->email;
+
+        $order->name = $request->name;
+
+        $order->phone = $request->phone;
+
+        $order->address1 = $request->address1;
+
+        $order->save();
+
+        echo "saved infor";
+
+    }
+
+    public function getOrders() {
+        $orders = Order::all();
+
+        $ordersArray = $orders->toArray();
+
+
+
+        echo json_encode($ordersArray);
+        
+        
     }
 
 }
