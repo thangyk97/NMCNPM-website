@@ -56,6 +56,8 @@ class ProductController extends Controller
 
         $order->address1 = $request->address1;
 
+        $order->title = $request->title;
+
         $order->save();
 
         echo "saved infor";
