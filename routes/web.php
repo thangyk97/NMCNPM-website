@@ -42,6 +42,13 @@ Route::get('/contact-us', function(){
     return view('contact-us');
 });
 
+Route::post('/upload', [
+    'as'=>'upload',
+    'uses'=>'ProductController@upload'
+]);
+
+Route::get('/upload_page', 'ProductController@getUploadPage');
+
 Route::post('/postInforCustomer', [
     'as'=>'postInforCustomer',
     'uses'=>'ProductController@postInforCustomer'

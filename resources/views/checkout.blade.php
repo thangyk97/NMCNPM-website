@@ -20,45 +20,24 @@
 
 				<div class="shopper-informations">
 					<div class="row">
-
-
-
-						<div class="col-sm-5 clearfix">
+						<div class="col-sm-10 clearfix">
 							<div class="bill-to">
 								<p>Bill To</p>
 								<div class="form-one">
 									<form id="myForm" action="{{route('postInforCustomer')}}" method="post">
 										{{ csrf_field() }}
-										<input type="text" name="companyName" placeholder="Company Name" required>
+										<input id="companyName" type="text" name="companyName" placeholder="Company Name" >
 										<input type="text" name="email" placeholder="Email*" required>
-										<input type="text" name="title" placeholder="Title">
-										<input type="text" name="name" placeholder="Name *">
-										<input type="text" name="phone" placeholder="Phone *">
-										<input type="text" name="address1" placeholder="Address 1 *">
+										<input type="text" name="title" placeholder="Title" >
+										<input type="text" name="name" placeholder="Name *" required>
+										<input type="text" name="phone" placeholder="Phone *" required>
+										<input type="text" name="address1" placeholder="Address 1 *" required>
 										<input type="text" name="address2" placeholder="Address 2">
+										<input class="btn btn-primary" type="submit" value="Order">
 									</form>
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-4">
-							<div class="order-message">
-								<p>Shipping Order</p>
-								<textarea name="message"  placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
-							</div>	
-							<!-- <a class="btn btn-primary" href="">Order</a> -->
-							<input class="btn btn-primary" type="button" onclick="myFunction()" value="Order">
-							
-							<script>
-								function myFunction() {
-									document.getElementById("myForm").submit();
-								}
-							</script>
-						</div>
-
-
-
-
-
 					</div>
 				</div>
 				<div class="review-payment">
