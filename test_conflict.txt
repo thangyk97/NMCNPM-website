@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 bla bla blo blo te te ta ta to to to 
+=======
+a + b = 2
+>>>>>>> 38c61f206f616e0c16d040a62a25ad54cb13014b
