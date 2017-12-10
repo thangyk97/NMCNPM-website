@@ -6,6 +6,7 @@ use App\Cart;
 use App\Product;
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests;
 use Session;
@@ -25,6 +26,22 @@ class ProductController extends Controller
         $cart = new Cart($oldCart);
 
         $cart->add($product, $product->id);
+
+        $request->session()->put('cart', $cart);
+
+        return view('cart', compact('cart'));
+    }
+
+    /**
+     * delete product item in cart
+     */
+    public function delete_item(Request $request, $id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+
+        $cart = new Cart($oldCart);
+
+        $cart->delete($id);
 
         $request->session()->put('cart', $cart);
 
@@ -75,8 +92,35 @@ class ProductController extends Controller
 
         $order->save();
 
+        $this->save_cart($request);
+
+        Session::flush();
+
         echo "saved infor";
 
+    }
+
+    public function save_cart(Request $request)
+    {
+        $order = new Order;
+
+        $id_order = $order->max('id');
+
+        $cart = Session::get('cart');
+
+        foreach ($cart->items as $items)
+        {
+
+            $cart_table = new Cart(null);
+
+            $cart_table->id_order = $id_order;
+
+            $cart_table->id_product = $items['item']->id;
+
+            $cart_table->amount = $items['qty'];
+
+            $cart_table->save();
+        }
     }
 
     /**
@@ -109,11 +153,13 @@ class ProductController extends Controller
 
             $product = new Product;
 
+            $product->producer = $request->producer;
+
             $product->name = $request->name;
 
             $product->price = $request->price;
 
-            $product->amount = $request->amount;
+            $product->total = $request->total;
 
             $product->link_img = "images/image_product/".$fileName;
 
@@ -124,16 +170,14 @@ class ProductController extends Controller
             return view('upload', compact('response'));
 
         }
-
-
-  
-
     }
 
     /**
      * Return upload page
      */
     public function getUploadPage() {
+
+        $this->middleware('auth')->except('logout');
 
         $response = "";
 

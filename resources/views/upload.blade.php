@@ -29,8 +29,9 @@
                             <form id="myForm" action="{{route('upload')}}" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <input id="image" type="file" name="image" placeholder="image" required>
+                                <input type="text" name="producer" placeholder="Producer" required>
                                 <input type="text" name="name" placeholder="Product name*" required>
-                                <input type="text" name="amount" placeholder="amount*" required>
+                                <input type="text" name="total" placeholder="amount*" required>
                                 <input type="text" name="price" placeholder="price*" required>
                                 <input class="btn btn-primary" type="submit" value="Upload Product">
                             </form>

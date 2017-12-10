@@ -52,7 +52,7 @@
 										<p class="cart_total_price">{{'$'.$storedItem['price']}}</p>
 									</td>
 									<td class="cart_delete">
-										<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+										<a class="cart_quantity_delete" href="{{route('delete_item', ['id' => $storedItem['item']->id])}}"><i class="fa fa-times"></i></a>
 									</td>
 								</tr>
 							@endforeach

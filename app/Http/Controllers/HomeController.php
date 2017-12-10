@@ -27,10 +27,4 @@ class HomeController extends Controller
         $products = Product::all();
         return view ('home', compact('products'));
     }
-
-    public function login()
-    {
-        $this->middleware('auth');
-        echo "afads";
-    }
 }

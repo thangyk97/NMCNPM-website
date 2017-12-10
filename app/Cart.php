@@ -2,8 +2,13 @@
 
 namespace App;
 
-class Cart
+use Illuminate\Database\Eloquent\Model;
+
+class Cart extends Model
 {
+
+    protected $table = "cart";
+
     public $items = null;
     public $totalQty = 0;
     public $totalPrice = 0;
@@ -32,5 +37,10 @@ class Cart
         $this->items[$id] = $storedItem;
         $this->totalQty++;
         $this->totalPrice += $item->price;
+    }
+
+    public function delete($id)
+    {
+        unset($this->items[$id]);
     }
 }

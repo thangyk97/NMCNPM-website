@@ -43,7 +43,7 @@ Route::post('/upload', [
     'uses'=>'ProductController@upload'
 ]);
 
-Route::get('/add_product', 'ProductController@getUploadPage');
+Route::get('/add_product', 'ProductController@getUploadPage')->middleware('auth');
 
 Route::post('/postInforCustomer', [
     'as'=>'postInforCustomer',
@@ -60,6 +60,11 @@ Route::get('session/forget', 'UserController@forgetSession');
 Route::get('/add-to-cart/{id}', [
     'uses' => 'ProductController@getAddToCart',
     'as'   => 'addToCart'
+]);
+
+Route::get('/delete_item/{id}',[
+    'uses' => 'ProductController@delete_item',
+    'as' => 'delete_item'
 ]);
 
 Route::get('/logout', 'Auth\LoginController@logout');
