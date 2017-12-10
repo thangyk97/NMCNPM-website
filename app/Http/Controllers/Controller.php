@@ -16,4 +16,6 @@ class Controller extends BaseController
         $products = Product::all();
         return view ('home', compact('products'));
     }
+
+
 }

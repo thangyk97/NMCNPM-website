@@ -68,7 +68,12 @@
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="{{url('checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="{{url('cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="{{url('login')}}"><i class="fa fa-lock"></i> Login</a></li>
+								@guest
+									<li><a href="{{url('login')}}"><i class="fa fa-lock"></i> Login</a></li>
+								@else
+									<li><a href="{{url('add_product')}}">add product</a></li>
+									<li><a href="{{ route('logout') }}">logout</a></li>
+								@endguest
 							</ul>
 						</div>
 					</div>

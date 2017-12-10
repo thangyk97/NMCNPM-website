@@ -14,10 +14,6 @@
 
 Route::get('/', 'Controller@getHome');
 
-Route::get('/login', function(){
-    return view('login');
-});
-
 Route::get('/checkout', 'ProductController@checkout');
 
 Route::get('/cart', 'ProductController@viewCart');
@@ -47,7 +43,7 @@ Route::post('/upload', [
     'uses'=>'ProductController@upload'
 ]);
 
-Route::get('/upload_page', 'ProductController@getUploadPage');
+Route::get('/add_product', 'ProductController@getUploadPage');
 
 Route::post('/postInforCustomer', [
     'as'=>'postInforCustomer',
@@ -65,3 +61,9 @@ Route::get('/add-to-cart/{id}', [
     'uses' => 'ProductController@getAddToCart',
     'as'   => 'addToCart'
 ]);
+
+Route::get('/logout', 'Auth\LoginController@logout');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
