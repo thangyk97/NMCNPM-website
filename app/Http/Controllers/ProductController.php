@@ -41,7 +41,33 @@ class ProductController extends Controller
 
         $cart = new Cart($oldCart);
 
-        $cart->delete($id);
+        $cart->delete_item($id);
+
+        $request->session()->put('cart', $cart);
+
+        return view('cart', compact('cart'));
+    }
+
+    public function plus(Request $request, $id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+
+        $cart = new Cart($oldCart);
+
+        $cart->plus($id);
+
+        $request->session()->put('cart', $cart);
+
+        return view('cart', compact('cart'));
+    }
+
+    public function subtract(Request $request, $id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+
+        $cart = new Cart($oldCart);
+
+        $cart->subtract($id);
 
         $request->session()->put('cart', $cart);
 
@@ -124,20 +150,6 @@ class ProductController extends Controller
     }
 
     /**
-     * Get all orders to app java
-     * Return: json string
-     */
-    public function getOrders() {
-        $orders = Order::all();
-
-        $ordersArray = $orders->toArray();
-
-        echo json_encode($ordersArray);
-        
-        
-    }
-
-    /**
      * Upload product data, save to database
      * table products
      */
@@ -152,8 +164,6 @@ class ProductController extends Controller
             $file->move('images/image_product', $fileName);
 
             $product = new Product;
-
-            $product->producer = $request->producer;
 
             $product->name = $request->name;
 

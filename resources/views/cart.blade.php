@@ -28,7 +28,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						@if($cart)
+						@if($cart && count($cart->items) > 0)
 							@foreach($cart->items as $storedItem)
 								<tr>
 									<td class="cart_product">
@@ -43,9 +43,9 @@
 									</td>
 									<td class="cart_quantity">
 										<div class="cart_quantity_button">
-											<a class="cart_quantity_up" href="{{URL('cart')}}"> + </a>
+											<a class="cart_quantity_up" href="{{route('plus', ['id' => $storedItem['item']->id])}}"> + </a>
 											<input class="cart_quantity_input" type="text" name="quantity" value="{{$storedItem['qty']}}" autocomplete="off" size="2">
-											<a class="cart_quantity_down" href=""> - </a>
+											<a class="cart_quantity_down" href="{{route('subtract', ['id' => $storedItem['item']->id])}}"> - </a>
 										</div>
 									</td>
 									<td class="cart_total">
@@ -70,7 +70,7 @@
 	</section> <!--/#cart_items-->
 
 	<section id="do_action">
-	@if ($cart)
+	@if ($cart && count($cart->items) > 0)
 		<div class="container">
 			<div class="heading">
 				<h3>What would you like to do next?</h3>

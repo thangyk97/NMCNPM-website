@@ -50,7 +50,7 @@ Route::post('/postInforCustomer', [
     'uses'=>'ProductController@postInforCustomer'
 ]);
 
-Route::get('/getOrders', 'ProductController@getOrders');
+Route::get('/getOrders', 'JsonController@getOrders');
 
 ////////////////////////////////////////////////
 Route::get('session/get', 'UserController@getSession');
@@ -65,6 +65,16 @@ Route::get('/add-to-cart/{id}', [
 Route::get('/delete_item/{id}',[
     'uses' => 'ProductController@delete_item',
     'as' => 'delete_item'
+]);
+
+Route::get('/plus/{id}',[
+    'uses' => 'ProductController@plus',
+    'as' => 'plus'
+]);
+
+Route::get('/subtract/{id}',[
+    'uses' => 'ProductController@subtract',
+    'as' => 'subtract'
 ]);
 
 Route::get('/logout', 'Auth\LoginController@logout');

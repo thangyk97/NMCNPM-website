@@ -39,8 +39,30 @@ class Cart extends Model
         $this->totalPrice += $item->price;
     }
 
-    public function delete($id)
+    public function delete_item($id)
     {
+        $this->totalPrice -= $this->items[$id]['price'];
+        $this->totalQty--;
         unset($this->items[$id]);
+    }
+
+    public function plus($id)
+    {
+        $this->items[$id]['qty']++;
+        $this->items[$id]['price'] = $this->items[$id]['item']->price * $this->items[$id]['qty'];
+        $this->totalPrice += $this->items[$id]['item']->price;
+        
+    }
+
+    public function subtract($id)
+    {
+        if ($this->items[$id]['qty'] == 1)
+        {
+            $this->delete_item($id);
+        } else {
+            $this->items[$id]['qty']--;
+            $this->items[$id]['price'] = $this->items[$id]['item']->price * $this->items[$id]['qty'];
+            $this->totalPrice -= $this->items[$id]['item']->price;
+        }
     }
 }
