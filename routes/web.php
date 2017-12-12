@@ -54,6 +54,8 @@ Route::get('/getOrders', 'JsonController@getOrders');
 
 Route::get('/getCart', 'JsonController@getCart');
 
+Route::get('/changeStatus/{status}', 'JsonController@changeStatus');
+
 ////////////////////////////////////////////////
 Route::get('session/get', 'UserController@getSession');
 Route::get('session/put', 'UserController@putSession');

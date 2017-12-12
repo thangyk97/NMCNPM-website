@@ -116,6 +116,8 @@ class ProductController extends Controller
 
         $order->address2 = $request->address2;
 
+        $order->status = "waiting";
+
         $order->save();
 
         $this->save_cart($request);

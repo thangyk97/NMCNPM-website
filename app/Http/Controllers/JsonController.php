@@ -28,7 +28,7 @@ class JsonController extends Controller
 
     public function getCart() 
     {
-        $orders = Order::all();
+        $orders = Order::where('status', 'waiting')->get();
 
         $result = array();
 
@@ -37,22 +37,30 @@ class JsonController extends Controller
         foreach ($orders as $order)
         {
 
-            $cart = DB::table('cart')->get()->where('id_order', $order['id']);
+            $carts = DB::table('cart')->get()->where('id_order', $order['id']);
 
-            $carts = array();
+            $cart_of_order = array();
 
-            foreach ($cart as $content)
+            foreach ($carts as $cart)
             {
-                array_push($carts, $content);
+                $product = Product::where('id', $cart->id_product)->get()->first();
+
+                $content = array("id"=>$product['id'], "name"=>$product['name'], "price"=>$product['price'], "amount"=>$cart->amount,);
+
+                $cart_of_order[] = $content;
             }
 
-            $order['cart'] = $carts;
+            $order['cart'] = $cart_of_order;
 
-            array_push($result, $order);
+            $result[] = $order;
 
         }
         
         echo json_encode($result);
-  
+    }
+
+    public function changeStatus($status)
+    {
+        
     }
 }
