@@ -52,6 +52,8 @@ Route::post('/postInforCustomer', [
 
 Route::get('/getOrders', 'JsonController@getOrders');
 
+Route::get('/getCart', 'JsonController@getCart');
+
 ////////////////////////////////////////////////
 Route::get('session/get', 'UserController@getSession');
 Route::get('session/put', 'UserController@putSession');

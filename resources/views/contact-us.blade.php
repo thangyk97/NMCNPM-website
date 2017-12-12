@@ -12,7 +12,12 @@
 					<h2 class="title text-center">Contact <strong>Us</strong></h2>    			    				    				
 					<div id="gmap" class="contact-map">
 					</div>
-				</div>			 		
+				</div>	
+				<script src="https://maps.googleapis.com/maps/api/js" async defer></script>
+
+				<script>
+					function initMap() {}
+				</script>		 		
 			</div>    	
     		<div class="row">  	
 	    		<div class="col-sm-8">

@@ -42,10 +42,7 @@
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="{{url('shop')}}"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -64,8 +61,6 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="{{url('checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="{{url('cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								@guest
@@ -104,13 +99,7 @@
 										<li><a href="{{url('cart')}}">Cart</a></li> 
 										<li><a href="{{url('login')}}">Login</a></li> 
                                     </ul>
-                                </li> 
-								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="{{url('blog')}}">Blog List</a></li>
-										<li><a href="{{url('blog-single')}}">Blog Single</a></li>
-                                    </ul>
-                                </li> 
+                                </li>
 								<li><a href="{{url('contact-us')}}">Contact</a></li>
 							</ul>
 						</div>

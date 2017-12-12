@@ -19,17 +19,40 @@ class JsonController extends Controller
      */
     public function getOrders() 
     {
-        $orders = Order::all();
+        $orders = Order::all()->first();
 
         $ordersArray = $orders->toArray();
 
-        echo json_encode($ordersArray);
-        
-        
+        echo json_encode($ordersArray);        
     }
 
     public function getCart() 
     {
+        $orders = Order::all();
 
+        $result = array();
+
+        $cart = array();
+
+        foreach ($orders as $order)
+        {
+
+            $cart = DB::table('cart')->get()->where('id_order', $order['id']);
+
+            $carts = array();
+
+            foreach ($cart as $content)
+            {
+                array_push($carts, $content);
+            }
+
+            $order['cart'] = $carts;
+
+            array_push($result, $order);
+
+        }
+        
+        echo json_encode($result);
+  
     }
 }
