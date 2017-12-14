@@ -39,27 +39,19 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    // protected function redirectTo()
-    // {
-
-    //     $products = Product::all();
-        
-    //     return view ('home', compact('products'));
-    // }
-
     protected function authenticated()
     {
-        $products = Product::all();
+        $controller = new Controller();
         
-        return view ('home', compact('products'));  
+        return $controller->getHome(); 
     }
 
     public function logout(Request $request) 
     {
         Auth::logout();
-
-        $products = Product::all();
         
-        return view ('home', compact('products')); 
+        $controller = new Controller();
+        
+        return $controller->getHome();
     }
 }

@@ -175,6 +175,8 @@ class ProductController extends Controller
 
             $product->link_img = "images/image_product/".$fileName;
 
+            $product->type = $request->type;
+
             $product->save();
 
             $response = "Saved product data";

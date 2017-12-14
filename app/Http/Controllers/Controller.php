@@ -14,7 +14,14 @@ class Controller extends BaseController
 
     public function getHome() {
         $products = Product::all();
-        return view ('home', compact('products'));
+        
+        $category = array("men"=>$products->where('type', 'men'),
+        "women"=>$products->where('type', 'women'),
+        "kid"=>$products->where('type', 'kid'),
+        "shoes"=>$products->where('type', 'shoes'),
+        "bag"=>$products->where('type', 'bag'));
+
+        return view ('home', ['products'=>$products,'category'=>$category]);
     }
 
 

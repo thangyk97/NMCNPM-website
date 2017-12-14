@@ -28,7 +28,7 @@ class JsonController extends Controller
 
     public function getCart() 
     {
-        $orders = Order::where('status', 'waiting')->get();
+        $orders = Order::all();
 
         $result = array();
 
@@ -59,8 +59,9 @@ class JsonController extends Controller
         echo json_encode($result);
     }
 
-    public function changeStatus($status)
+    public function changeStatus(Request $request)
     {
+        $order = Order::where('id',$request->id)->update(['status'=>$request->status]);
         
     }
 }

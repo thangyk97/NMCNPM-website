@@ -25,8 +25,8 @@
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="images/home/girl1.jpg" class="girl img-responsive" alt="" />
-									<img src="images/home/pricing.png"  class="pricing" alt="" />
+									<img src="{{ URL::asset('images/home/girl1.jpg')}}" class="girl img-responsive" alt="" />
+									<img src="{{ URL::asset('images/home/pricing.png')}}"  class="pricing" alt="" />
 								</div>
 							</div>
 							<div class="item">
@@ -37,8 +37,8 @@
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="images/home/girl2.jpg" class="girl img-responsive" alt="" />
-									<img src="images/home/pricing.png"  class="pricing" alt="" />
+									<img src="{{ URL::asset('images/home/girl2.jpg')}}" class="girl img-responsive" alt="" />
+									<img src="{{ URL::asset('images/home/pricing.png')}}"  class="pricing" alt="" />
 								</div>
 							</div>
 							
@@ -78,31 +78,35 @@
 						<h2>Category</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							
-							
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="{{url('home')}}">All</a></h4>
+								</div>
+							</div>							
 
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Mens</a></h4>
+									<h4 class="panel-title"><a href="{{url('category', ['type'=>'men'])}}">Mens</a></h4>
 								</div>
 							</div>
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Womens</a></h4>
+									<h4 class="panel-title"><a href="{{url('category', ['type'=>'women'])}}">Womens</a></h4>
 								</div>
 							</div>
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Kids</a></h4>
+									<h4 class="panel-title"><a href="{{url('category', ['type'=>'kid'])}}">Kids</a></h4>
 								</div>
 							</div>
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Bags</a></h4>
+									<h4 class="panel-title"><a href="{{url('category', ['type'=>'bag'])}}">Bags</a></h4>
 								</div>
 							</div>
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Shoes</a></h4>
+									<h4 class="panel-title"><a href="{{url('category', ['type'=>'shoes'])}}">Shoes</a></h4>
 								</div>
 							</div>
 						</div><!--/category-products-->
@@ -116,7 +120,7 @@
 						</div><!--/price-range-->
 						
 						<div class="shipping text-center"><!--shipping-->
-							<img src="images/home/shipping.jpg" alt="" />
+							<img src="{{URL::asset('images/home/shipping.jpg')}}" alt="" />
 						</div><!--/shipping-->
 					
 					</div>
@@ -161,10 +165,8 @@
 						</div>
 						<div class="tab-content">
 							<div class="tab-pane fade active in" id="Mens" >
-								<?php
-									$mens_product = array_slice($products->toArray(), 0, 4);
-								?>
-								@foreach ($mens_product as $item)
+								
+								@foreach ($category['men'] as $item)
 									<div class="col-sm-3">
 										<div class="product-image-wrapper">
 											<div class="single-products">
@@ -184,10 +186,7 @@
 							</div><!--end Mens-->
 							
 							<div class="tab-pane fade" id="Womens" >
-								<?php
-									$mens_product = array_slice($products->toArray(), 0, 4);
-								?>
-								@foreach ($mens_product as $item)
+								@foreach ($category['women'] as $item)
 									<div class="col-sm-3">
 										<div class="product-image-wrapper">
 											<div class="single-products">
@@ -206,10 +205,7 @@
 							</div>
 							
 							<div class="tab-pane fade" id="Kids" >
-								<?php
-									$mens_product = array_slice($products->toArray(), 0, 4);
-								?>
-								@foreach ($mens_product as $item)
+								@foreach ($category['kid'] as $item)
 									<div class="col-sm-3">
 										<div class="product-image-wrapper">
 											<div class="single-products">
@@ -227,10 +223,7 @@
 							</div>
 							
 							<div class="tab-pane fade" id="Bags" >
-								<?php
-									$mens_product = array_slice($products->toArray(), 0, 4);
-								?>
-								@foreach ($mens_product as $item)
+								@foreach ($category['bag'] as $item)
 									<div class="col-sm-3">
 										<div class="product-image-wrapper">
 											<div class="single-products">
@@ -248,10 +241,7 @@
 							</div>
 							
 							<div class="tab-pane fade" id="Shoes" >
-								<?php
-									$mens_product = array_slice($products->toArray(), 0, 4);
-								?>
-								@foreach ($mens_product as $item)
+								@foreach ($category['shoes'] as $item)
 									<div class="col-sm-3">
 										<div class="product-image-wrapper">
 											<div class="single-products">

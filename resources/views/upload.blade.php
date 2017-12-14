@@ -32,6 +32,13 @@
                                 <input type="text" name="name" placeholder="Product name*" required>
                                 <input type="text" name="total" placeholder="amount*" required>
                                 <input type="text" name="price" placeholder="price*" required>
+                                <select name="type">
+                                    <option value="men">mens</option>
+                                    <option value="women">womens</option>
+                                    <option value="kid">kids</option>
+                                    <option value="shoes">shoes</option>
+                                    <option value="bag">bags</option>
+                                </select>
                                 <input class="btn btn-primary" type="submit" value="Upload Product">
                             </form>
                         </div>

@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/', 'Controller@getHome');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/checkout', 'ProductController@checkout');
 
@@ -45,6 +45,13 @@ Route::post('/upload', [
 
 Route::get('/add_product', 'ProductController@getUploadPage')->middleware('auth');
 
+Route::get('/edit_product', 'ProductController@editProduct')->middleware('auth');
+
+Route::post('/edit', [
+    'as'=>'edit',
+    'uses'=>'ProductController@edit'
+]);
+
 Route::post('/postInforCustomer', [
     'as'=>'postInforCustomer',
     'uses'=>'ProductController@postInforCustomer'
@@ -54,8 +61,10 @@ Route::get('/getOrders', 'JsonController@getOrders');
 
 Route::get('/getCart', 'JsonController@getCart');
 
-Route::get('/changeStatus/{status}', 'JsonController@changeStatus');
-
+Route::post('/changeStatus', [
+    'as'=>'changeStatus',
+    'uses'=>'JsonController@changeStatus'
+]);
 ////////////////////////////////////////////////
 Route::get('session/get', 'UserController@getSession');
 Route::get('session/put', 'UserController@putSession');
@@ -86,3 +95,9 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/category/{type}', 'HomeController@get_category');
+
+Route::get('/test_post',function(){
+    return view('test_post');
+});
