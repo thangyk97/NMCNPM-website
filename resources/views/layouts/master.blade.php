@@ -67,6 +67,7 @@
 									<li><a href="{{url('login')}}"><i class="fa fa-lock"></i> Login</a></li>
 								@else
 									<li><a href="{{url('add_product')}}">add product</a></li>
+									<li><a href="{{url('edit_product')}}">edit product</a></li>
 									<li><a href="{{ route('logout') }}">logout</a></li>
 								@endguest
 							</ul>
@@ -93,7 +94,6 @@
 								<li><a href={{url('/')}} class="active">Home</a></li>
 								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="{{url('shop')}}">Products</a></li>
 										<li><a href="{{url('product-details')}}">Product Details</a></li> 
 										<li><a href="{{url('checkout')}}">Checkout</a></li> 
 										<li><a href="{{url('cart')}}">Cart</a></li> 
@@ -105,9 +105,13 @@
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
-						</div>
+						<form action="{{route('search')}}" method="post" enctype="multipart/form-data">
+						{{ csrf_field() }}
+							<div class="search_box pull-right">
+								<input type="text" name="intent" placeholder="Search"/>
+								<button type="submit">search</button>
+							</div>						
+						</form>
 					</div>
 				</div>
 			</div>

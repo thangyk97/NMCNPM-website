@@ -190,13 +190,26 @@ class ProductController extends Controller
      * Return upload page
      */
     public function getUploadPage() {
-
-        $this->middleware('auth')->except('logout');
-
+        
         $response = "";
 
         return view('upload', compact('response'));
 
+    }
+
+    /**
+     * Return edit product page
+     */
+    public function editProduct()
+    {
+        return view('edit_product');   
+    }
+
+    public function search(Request $request)
+    {
+        $products = Product::where('name','like',"%{$request->intent}%")->get();
+        
+        return view('shop', compact('products'));
     }
 
 }

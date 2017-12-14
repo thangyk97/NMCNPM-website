@@ -22,10 +22,6 @@ Route::get('/product-details', function(){
     return view('product-details');
 });
 
-Route::get('/shop', function(){
-    return view('shop');
-});
-
 Route::get('/blog', function(){
     return view('blog');
 });
@@ -50,6 +46,11 @@ Route::get('/edit_product', 'ProductController@editProduct')->middleware('auth')
 Route::post('/edit', [
     'as'=>'edit',
     'uses'=>'ProductController@edit'
+]);
+
+Route::post('/search', [
+    'as'=>'search',
+    'uses'=>'ProductController@search'
 ]);
 
 Route::post('/postInforCustomer', [
