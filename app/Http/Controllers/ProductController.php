@@ -202,7 +202,29 @@ class ProductController extends Controller
      */
     public function editProduct()
     {
-        return view('edit_product');   
+        $products = Product::all();
+        return view('edit_product', compact('products'));   
+    }
+
+    public function edit(Request $request)
+    {
+        if($request->hasFile('image')) {
+            
+            $file = $request->file('image');
+
+            $fileName = $file->getClientOriginalName('image'); 
+
+            $file->move('images/image_product', $fileName);
+
+            $product = Product::where('id',$request->id)->first();
+
+            $product->link_img = "images/image_product/".$fileName;
+
+            $product->save();
+
+            $products = Product::all();
+            return view('edit_product', compact('products')); 
+        }
     }
 
     public function search(Request $request)

@@ -1,15 +1,7 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+/**
+ * Author: thangkt
+ */
 
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -58,6 +50,50 @@ Route::post('/postInforCustomer', [
     'uses'=>'ProductController@postInforCustomer'
 ]);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * get data by json
+ */
 Route::get('/getOrders', 'JsonController@getOrders');
 
 Route::get('/getCart', 'JsonController@getCart');
@@ -66,6 +102,99 @@ Route::post('/changeStatus', [
     'as'=>'changeStatus',
     'uses'=>'JsonController@changeStatus'
 ]);
+
+// get data
+Route::get('/getJsonProducts', 'JsonController@getJsonProducts');
+
+Route::get('/getJsonEmployees', 'JsonController@getJsonEmployees');
+
+Route::get('/getJsonExportReceiptes', 'JsonController@getJsonExportReceiptes');
+
+Route::get('/getJsonImportReceiptes', 'JsonController@getJsonImportReceiptes');
+
+Route::get('/getJsonSuppliers', 'JsonController@getJsonSuppliers');
+
+Route::get('/getJsonManagers', 'JsonController@getJsonManagers');
+
+// post data
+
+Route::post('/saveJsonProducts', [
+    'as'=>'saveJsonProducts',
+    'uses'=>'JsonController@saveJsonProducts'
+]);
+
+Route::post('/updateJsonProducts', [
+    'as'=>'updateJsonProducts',
+    'uses'=>'JsonController@updateJsonProducts'
+]);
+
+Route::post('/saveJsonEmployees', [
+    'as'=>'saveJsonEmployees',
+    'uses'=>'JsonController@saveJsonEmployees'
+]);
+
+Route::post('/updateJsonEmployees', [
+    'uses'=>'JsonController@updateJsonEmployees',
+    'as'=>'updateJsonEmployees'
+]);
+
+Route::post('/saveJsonExportReceipt',[
+    'as'=>'saveJsonExportReceipt',
+    'uses'=>'JsonController@saveJsonExportReceipt'
+]);
+
+Route::post('/updateJsonExportReceipt', [
+    'as'=>'updateJsonExportReceipt',
+    'uses'=>'JsonController@updateJsonExportReceipt'
+]);
+
+Route::post('/saveJsonImportReceipt', [
+    'as'=>'saveJsonImportReceipt',
+    'uses'=>'JsonController@saveJsonImportReceipt'
+]);
+
+Route::post('/updateJsonImportReceipt', [
+    'as'=>'updateJsonImportReceipt',
+    'uses'=>'JsonController@updateJsonImportReceipt'
+]);
+
+Route::post('/saveJsonSupplier', [
+    'as'=>'saveJsonSupplier',
+    'uses'=>'JsonController@saveJsonSupplier'
+]);
+
+Route::post('/loginApp', [
+    'as'=>'loginApp',
+    'uses'=>'JsonController@loginApp'
+]);
+
+Route::post('/saveJsonManager', [
+    'as'=>'saveJsonManager',
+    'uses'=>'JsonController@saveJsonManager'
+]);
+
+Route::post('/updateJsonManager', [
+    'as'=>'updateJsonManager',
+    'uses'=>'JsonController@updateJsonManager'
+]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ////////////////////////////////////////////////
 Route::get('session/get', 'UserController@getSession');
 Route::get('session/put', 'UserController@putSession');

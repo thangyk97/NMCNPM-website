@@ -2,9 +2,9 @@
 <div>
     <div>
 
-        <form action="{{route('changeStatus')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('saveJsonSupplier')}}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
-            <input type="text" name="status" value="<?php echo csrf_token(); ?>">
+            <input type="text" name="data" value="">
             
             <button type="submit">click!</button>
 

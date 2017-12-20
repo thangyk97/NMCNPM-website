@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-	Cart | E-shop
+	Edit product | E-shop
 @endsection
 	
 @section('content')
@@ -10,38 +10,43 @@
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
 				  <li><a href="#">Home</a></li>
-				  <li class="active">Shopping Cart</li>
+				  <li class="active">Edit product</li>
 				</ol>
 			</div>
 
  
 
-            <!-- form upload -->
-            <div class="shopper-informations">
-            <div class="row">
-                <div class="col-sm-10 clearfix">
-                    <div class="bill-to">
-                        <p>Informations edit product</p>
-                        <div class="form-one">
-                            <form id="myForm" action="{{route('edit')}}" method="post" enctype="multipart/form-data">
-                                {{ csrf_field() }}
-                                <input id="image" type="file" name="image" placeholder="image" required>
-                                <input type="text" name="name" placeholder="Product name*" required>
-                                <input type="text" name="total" placeholder="amount*" required>
-                                <input type="text" name="price" placeholder="price*" required>
-                                <select name="type">
-                                    <option value="men">mens</option>
-                                    <option value="women">womens</option>
-                                    <option value="kid">kids</option>
-                                    <option value="shoes">shoes</option>
-                                    <option value="bag">bags</option>
-                                </select>
-                                <input class="btn btn-primary" type="submit" value="Edit product">
-                            </form>
+            <div class="col-sm-12 padding-right">
+            <div class="features_items"><!--features_items-->
+                <h2 class="title text-center">Features Items</h2>
+
+                @foreach ($products as $item)
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="{{$item->link_img}}" alt="" />
+                                        <h2>{{$item->price}}</h2>
+                                        <h4>id: {{$item->id}}</h2>
+                                        <p>{{$item->name}}</p>
+                                    </div>
+                            </div>
+                            <div class="choose">
+                                <ul class="nav nav-pills nav-justified">
+                                    <form action="{{route('edit',['id' => $item->id])}}" method="post" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                        <input hidden type="text" value="{{$item->id}}">
+                                        <input id="image" type="file" name="image" placeholder="image" required>
+                                        <button type="submit">add image</button>
+                                    </form>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                @endforeach
+
+            </div><!--features_items-->
+        </div>
 
         </div>
 	</section><!--/#do_action-->

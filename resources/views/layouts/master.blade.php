@@ -66,7 +66,7 @@
 								@guest
 									<li><a href="{{url('login')}}"><i class="fa fa-lock"></i> Login</a></li>
 								@else
-									<li><a href="{{url('add_product')}}">add product</a></li>
+									
 									<li><a href="{{url('edit_product')}}">edit product</a></li>
 									<li><a href="{{ route('logout') }}">logout</a></li>
 								@endguest

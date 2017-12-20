@@ -14,5 +14,26 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         //
         'changeStatus',
+
+        'saveJsonProducts',
+        'updateJsonProducts',
+
+        'saveJsonEmployees',
+        'updateJsonEmployees',
+
+        'saveJsonManager',
+        'updateJsonManager',
+
+        'saveJsonExportReceipt',
+        'updateJsonExportReceipt',
+
+        'saveJsonImportReceipt',
+        'updateJsonImportReceipt',
+
+        'saveJsonSupplier',
+        
+
+        'loginApp',
+        
     ];
 }
