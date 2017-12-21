@@ -35,6 +35,9 @@ class VerifyCsrfToken extends Middleware
         'saveJsonAccount',
         'updateJsonAccount',
         'loginApp',
+
+        'getManagerById',
+        'employee2manager',
         
     ];
 }

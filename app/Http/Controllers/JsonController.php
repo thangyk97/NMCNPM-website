@@ -292,12 +292,18 @@ class JsonController extends Controller
     public function loginApp(Request $request)
     {
         $account = json_decode($request->data);
-        $account_db = DB::table('account')->where('user_name',$account->username)
+        $account_db = DB::table('account')->where('user_name',$account->user_name)
         ->where('password',$account->password)->first();
         if ($account_db != null){
             $employee_db = Employee::where('id',$account_db->id_employee)->first();
             echo json_encode($employee_db);
         }
+    }
+
+    public function getJsonAccounts()
+    {
+        $account_db = DB::table('account')->get();
+        echo json_encode($account_db);
     }
 
     public function saveJsonAccount(Request $request)
@@ -390,5 +396,54 @@ class JsonController extends Controller
             $managers[] = $employee_db;
         }
         return json_encode($managers);
+    }
+
+    public function getManagerById(Request $request)
+    {
+        $id = intval($request->data);
+
+        $employee = Employee::where('id', $id)->first();
+        $manager = DB::table('employee_manager')->where('id_manager', $id)->first();
+
+        $employee->commission = $manager->commission;
+
+        echo json_encode($employee);
+    }
+
+    public function getDefaultSalary()
+    {
+        $salary = DB::table('default_salary')->first();
+        return $salary->default_salary;
+    }
+
+    public function employee2manager(Request $request)
+    {
+        $manager = json_decode($request->data);
+
+        $employee_db = Employee::where('id',$manager->id);
+
+        $employee_db->update([
+            'name'=>$manager->name,
+            'sex'=>$manager->sex,
+            'birth_date'=>$manager->birth_date,
+            'address'=>$manager->address,
+            'phone_no'=>$manager->phone_no,
+            'coefficient_salary'=>$manager->coefficient_salary,
+            'position'=>$manager->position,
+        ]);
+        $check = DB::table('employee_manager')->where('id_manager', $manager->id);
+        if ($check == null) 
+        {
+            $manager_db = DB::table('employee_manager')->insert([
+                'id_manager'=>$manager->id,
+                'commission'=>$manager->commission,
+            ]);
+        } else {
+            DB::table('employee_manager')->where('id_manager', $manager->id)->update([
+                'id_manager'=>$manager->id,
+                'commission'=>$manager->commission,
+            ]);
+        }
+
     }
 }

@@ -2,7 +2,7 @@
 <div>
     <div>
 
-        <form action="{{route('saveJsonSupplier')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('employee2manager')}}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
             <input type="text" name="data" value="">
             

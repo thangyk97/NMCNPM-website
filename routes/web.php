@@ -116,6 +116,9 @@ Route::get('/getJsonSuppliers', 'JsonController@getJsonSuppliers');
 
 Route::get('/getJsonManagers', 'JsonController@getJsonManagers');
 
+Route::get('/getJsonAccounts', 'JsonController@getJsonAccounts');
+
+Route::get('/getDefaultSalary', 'JsonController@getDefaultSalary');
 // post data
 
 Route::post('/saveJsonProducts', [
@@ -178,7 +181,25 @@ Route::post('/updateJsonManager', [
     'uses'=>'JsonController@updateJsonManager'
 ]);
 
+Route::post('/saveJsonAccount', [
+    'as'=>'saveJsonAccount',
+    'uses'=>'JsonController@saveJsonAccount'
+]);
 
+Route::post('/updateJsonAccount', [
+    'as'=>'updateJsonAccount',
+    'uses'=>'JsonController@updateJsonAccount'
+]);
+
+Route::post('/getManagerById', [
+    'as'=>'getManagerById',
+    'uses'=>'JsonController@getManagerById'
+]);
+
+Route::post('/employee2manager', [
+    'as'=>'employee2manager',
+    'uses'=>'JsonController@employee2manager'
+]);
 
 
 
