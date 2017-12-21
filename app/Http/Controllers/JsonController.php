@@ -298,7 +298,20 @@ class JsonController extends Controller
             $employee_db = Employee::where('id',$account_db->id_employee)->first();
             echo json_encode($employee_db);
         }
-        
+    }
+
+    public function saveJsonAccount(Request $request)
+    {
+        $account = json_decode($request->data);
+
+        DB::table('account')->insert([
+            []
+        ]);
+
+    }
+
+    public function updateJsonAccount(Request $request)
+    {
 
     }
     
@@ -335,9 +348,9 @@ class JsonController extends Controller
         $employee_db->position = $manager->position ;
         $employee_db->save();
 
-        $manager_db = table('employee_manager')->insert([
+        $manager_db = DB::table('employee_manager')->insert([
             [
-                'id'=>$employee_db->id,
+                'id_manager'=>$employee_db->id,
                 'commission'=>$manager->commission,
             ]
         ]);

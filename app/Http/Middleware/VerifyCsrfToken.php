@@ -32,7 +32,8 @@ class VerifyCsrfToken extends Middleware
 
         'saveJsonSupplier',
         
-
+        'saveJsonAccount',
+        'updateJsonAccount',
         'loginApp',
         
     ];
